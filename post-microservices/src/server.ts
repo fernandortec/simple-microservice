@@ -1,13 +1,15 @@
 import express, { json } from "express";
 import { postRoutes } from "./interfaces/routes/post-routes";
-import morgan from 'morgan'
+import morgan from "morgan";
 
 const app = express();
 
-app.use(morgan('dev'))
+app.use(morgan("dev"));
 app.use(json());
-app.use(postRoutes)
+app.use(postRoutes);
 
-app.listen(process.env.PORT || 3000);
+app.listen(process.env.PORT || 3000, () => {
+  console.log(`Running on http://${"0.0.0.0"}:${3000}`);
+});
 
 export { app };

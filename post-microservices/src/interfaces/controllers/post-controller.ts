@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { Post } from "../../domain/post";
 import { PostRepository } from "../../infra/repositories/post-repository.types";
-import { UserServices } from "../client/user-microservice-api";
+import { UserServices } from "../../services/user-microservice-api";
 
 class PostController {
   constructor(
