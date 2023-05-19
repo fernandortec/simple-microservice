@@ -1,11 +1,13 @@
-FROM node:16-alpine as base
+FROM node:16-alpine
 
-WORKDIR /usr/src/app
+WORKDIR /usr/app
+
 COPY package*.json ./
 
 RUN yarn install
 
-COPY . .
+COPY . /
 
 EXPOSE 3333
+
 CMD [ "yarn", "dev" ]

@@ -1,21 +1,19 @@
-import { User } from "../../domain/user";
+import { User, UserModel } from "../../domain/user";
 import { UserRepository } from "./user-repository.types";
 
 class UserRepositoryImpl implements UserRepository {
-  private users: User[] = [];
+  private userModel = UserModel;
 
-  create({ email, name }: User): User {
-    const user = new User({ email, id: this.users.length + 1, name });
-
-    this.users.push(user);
+  async create({ email, name }: User): Promise<User> {
+    const user = await this.userModel.create({ email, name });
 
     return user;
   }
 
-  findById(userId: number): User {
-    const user = this.users.filter((user) => user.id === userId);
+  async findById(userId: string): Promise<User | null> {
+    const user = this.userModel.findById(userId);
 
-    return user[0];
+    return user;
   }
 }
 
