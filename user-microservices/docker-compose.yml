@@ -8,15 +8,13 @@ services:
     ports:
       - "3333:3333"
   db:
-    image: 'mongo'
+    image: 'mongo:latest'
     container_name: db
     restart: always
-    environment: 
-      - MONGO_INITDB_ROOT_USERNAME=nodeuser
-      - MONGO_INITDB_ROOT_PASSWORD=nodeuser
-      - MONGO_INITDB_DATABASE=db
-      
     ports:
       - '27017:27017'
     volumes:
-      - ./data/db:/data/db
+      - .dbdata-volume:/data/db
+
+volumes:
+  dbdata-volume:

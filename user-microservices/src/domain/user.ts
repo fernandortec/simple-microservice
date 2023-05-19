@@ -11,11 +11,6 @@ const UserSchema = new Schema<User>({
     type: String,
     unique: true,
   },
-  id: {
-    type: String,
-    _id: true,
-    required: false,
-  },
   name: String,
 });
 

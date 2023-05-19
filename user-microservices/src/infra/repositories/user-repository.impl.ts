@@ -11,7 +11,7 @@ class UserRepositoryImpl implements UserRepository {
   }
 
   async findById(userId: string): Promise<User | null> {
-    const user = this.userModel.findById(userId);
+    const user = await this.userModel.findById(userId);
 
     return user;
   }
